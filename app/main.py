@@ -1,6 +1,6 @@
 import sys
 
-from graph import Graph
+from app.graph import Graph
 
 
 def print_menu():
