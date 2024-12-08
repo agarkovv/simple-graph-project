@@ -1,3 +1,5 @@
+import sys
+
 from graph import Graph
 
 
@@ -14,14 +16,32 @@ def print_menu():
     print("0. Exit")
 
 
-def main():
+def main(non_interactive=False):
     graph = Graph()
+
+    if non_interactive:
+        # Demo mode: Create a sample graph
+        print("Running in demo mode...")
+        graph.add_vertex("A")
+        graph.add_vertex("B")
+        graph.add_vertex("C")
+        graph.add_edge("A", "B", 1.0)
+        graph.add_edge("B", "C", 2.0)
+
+        print("\nVertices:", graph.get_vertices())
+        print("\nEdges:")
+        for from_v, to_v, weight in graph.get_edges():
+            print(f"  {from_v} -> {to_v} (weight: {weight})")
+
+        print("\nPath from A to C:", " -> ".join(graph.find_path("A", "C")))
+        print("Is cyclic:", graph.is_cyclic())
+        return
 
     while True:
         print_menu()
-        choice = input("\nEnter your choice (0-8): ")
-
         try:
+            choice = input("\nEnter your choice (0-8): ")
+
             if choice == "0":
                 print("Goodbye!")
                 break
@@ -87,4 +107,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main("--demo" in sys.argv)
+
