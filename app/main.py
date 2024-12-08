@@ -16,7 +16,7 @@ def print_menu():
     print("0. Exit")
 
 
-def main(non_interactive=False):
+def main():
     graph = Graph()
 
     # Always run in demo mode for deployment
