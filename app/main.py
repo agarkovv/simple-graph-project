@@ -1,5 +1,3 @@
-import sys
-
 from app.graph import Graph
 
 
@@ -16,7 +14,7 @@ def print_menu():
     print("0. Exit")
 
 
-def main():
+def main(non_interactive=False):
     graph = Graph()
 
     # Always run in demo mode for deployment
@@ -47,4 +45,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(non_interactive=False)
